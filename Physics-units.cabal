@@ -1,0 +1,64 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           Physics-units
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/Physics-units#readme>
+homepage:       https://github.com/marekbauer07/Physics-units#readme
+bug-reports:    https://github.com/marekbauer07/Physics-units/issues
+author:         Marek Bauer
+maintainer:     marekbauer07@gmail.com
+copyright:      2024 Marek Bauer
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/marekbauer07/Physics-units
+
+library
+  exposed-modules:
+      BasicUnits
+      GeneralizedOperations
+      GeneralizedOperations.Add
+      GeneralizedOperations.Inv
+      GeneralizedOperations.Mul
+      GeneralizedOperations.Neg
+      GeneralizedOperations.Pow
+      SIUnit
+      SIValue
+      TypeNumbers.Integer
+      TypeNumbers.Natural
+      TypeNumbers.Rational
+  other-modules:
+      Paths_Physics_units
+  autogen-modules:
+      Paths_Physics_units
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+test-suite Physics-units-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_Physics_units
+  autogen-modules:
+      Paths_Physics_units
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Physics-units
+    , base >=4.7 && <5
+  default-language: Haskell2010
