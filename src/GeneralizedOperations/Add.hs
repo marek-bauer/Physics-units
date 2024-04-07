@@ -1,5 +1,7 @@
 {-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE TypeOperators #-}
 
 module GeneralizedOperations.Add 
   ( Add(..) )

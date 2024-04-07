@@ -2,20 +2,24 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE TypeOperators #-}
 
 module SIValue
   ( SIValue(..), liftSIValue)
 where
 
-import Prelude hiding ((+), (-), (*), (/), sqrt, const)
+import Prelude hiding ( (+), (-), (*), (/), sqrt, const )
 import SIUnit ( SIUnit(..), AddUnits, MulUnits, showUnits )
-import GeneralizedOperations (Add(..), Neg(..), Mul(..), Inv(..), ConstPow(..), ConstPower(..))
+import GeneralizedOperations ( Add(..), Neg(..), Mul(..), Inv(..), ConstPow(..), ConstPower(..) )
 import TypeNumbers.Rational ( QNeg', KnownRational(..), QPos', QZero )
-import GeneralizedOperations.Pow (ConstPow)
-import GHC.TypeLits(KnownNat, natVal)
+import GHC.TypeLits( KnownNat, natVal )
 import Data.Proxy ( Proxy(..) )
+import Data.Kind ( Type )
 
-newtype SIValue (u :: SIUnit) (a :: *) = SIValue { value :: a }
+newtype SIValue (u :: SIUnit) (a :: Type) = SIValue { value :: a }
 
 type One = Unit QZero QZero QZero QZero QZero QZero QZero
 

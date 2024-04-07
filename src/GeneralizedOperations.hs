@@ -1,5 +1,3 @@
-
-
 module GeneralizedOperations 
   ( Add(..)
   , Neg(..)

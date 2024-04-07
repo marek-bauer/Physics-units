@@ -1,6 +1,8 @@
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MonoLocalBinds #-}
+{-# LANGUAGE TypeOperators #-}
 
 module GeneralizedOperations.Neg 
   ( Neg(..)

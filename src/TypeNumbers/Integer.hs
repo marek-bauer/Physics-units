@@ -1,6 +1,11 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE DataKinds #-}
-{-# LANGUAGE UndecidableInstances  #-}
+{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE InstanceSigs #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module TypeNumbers.Integer 
   ( TInt(..)
@@ -31,13 +36,13 @@ data P (i :: k) = P
 class KnownInt (i :: TInt) where
   intVal :: proxy i -> Integer
 
-instance (KnownNat n) => KnownInt (Pos n) where
+instance forall n. (KnownNat n) => KnownInt (Pos n) where
   intVal :: forall proxy n. KnownNat n => proxy (Pos n) -> Integer
   intVal _ = natVal (P :: P n)
 
-instance (KnownNat n) => KnownInt (Neg n) where
+instance forall n. (KnownNat n) => KnownInt (Neg n) where
   intVal :: forall proxy n. KnownNat n => proxy (Neg n) -> Integer
-  intVal _ = - natVal (P :: P n)
+  intVal _ = -(natVal (P :: P n))
 
 type family INormalize (x :: TInt) :: TInt where
   INormalize (Neg 0) = Pos 0

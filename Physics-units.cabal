@@ -6,9 +6,9 @@ cabal-version: 2.2
 
 name:           Physics-units
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/Physics-units#readme>
-homepage:       https://github.com/marekbauer07/Physics-units#readme
-bug-reports:    https://github.com/marekbauer07/Physics-units/issues
+description:    Please see the README on GitHub at <https://github.com/marek-bauer/Physics-units#readme>
+homepage:       https://github.com/marek-bauer/Physics-units#readme
+bug-reports:    https://github.com/marek-bauer/Physics-units/issues
 author:         Marek Bauer
 maintainer:     marekbauer07@gmail.com
 copyright:      2024 Marek Bauer
@@ -21,7 +21,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/marekbauer07/Physics-units
+  location: https://github.com/marek-bauer/Physics-units
 
 library
   exposed-modules:
