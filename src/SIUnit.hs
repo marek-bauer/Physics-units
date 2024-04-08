@@ -8,6 +8,7 @@
 module SIUnit
   ( SIUnit(..)
   , AddUnits
+  , SubUnits
   , MulUnits
   , showUnits
   )
@@ -17,8 +18,9 @@ import TypeNumbers.Rational (QAdd, QMul, QSub, TRational, KnownRational(..))
 import Data.Proxy (Proxy(..))
 import Control.Monad (join)
 import Data.Ratio (numerator, denominator)
+import Data.Kind ( Type )
 
-data SIUnit :: * where
+data SIUnit :: Type where
   Unit 
     :: TRational -- ^ second
     -> TRational -- ^ meter
@@ -32,6 +34,10 @@ data SIUnit :: * where
 type family AddUnits (x :: SIUnit) (y :: SIUnit) :: SIUnit where
   AddUnits (Unit s m kg a k mol cd) (Unit s' m' kg' a' k' mol' cd') 
     = Unit (QAdd s s') (QAdd m m') (QAdd kg kg') (QAdd a a') (QAdd k k') (QAdd mol mol') (QAdd cd cd')
+
+type family SubUnits (x :: SIUnit) (y :: SIUnit) :: SIUnit where
+  SubUnits (Unit s m kg a k mol cd) (Unit s' m' kg' a' k' mol' cd') 
+    = Unit (QSub s s') (QSub m m') (QSub kg kg') (QSub a a') (QSub k k') (QSub mol mol') (QSub cd cd')
 
 type family MulUnits (x :: SIUnit) (c :: TRational) :: SIUnit where
   MulUnits (Unit s m kg a k mol cd) c
